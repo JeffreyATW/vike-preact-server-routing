@@ -2,25 +2,28 @@ import logo from './logo.svg'
 import { PageContextProvider } from './usePageContext'
 import './PageShell.css'
 import { Link } from './Link'
+import { Provider } from 'react-redux'
 
 export { PageShell }
 
 const PageShell = function ({ children, pageContext }) {
   return (
-    <PageContextProvider pageContext={pageContext}>
-      <Layout>
-        <Sidebar>
-          <Logo />
-          <Link className="navitem" href="/">
-            Home
-          </Link>
-          <Link className="navitem" href="/about">
-            About
-          </Link>
-        </Sidebar>
-        <Content>{children}</Content>
-      </Layout>
-    </PageContextProvider>
+    <Provider>
+      <PageContextProvider pageContext={pageContext}>
+        <Layout>
+          <Sidebar>
+            <Logo />
+            <Link className="navitem" href="/">
+              Home
+            </Link>
+            <Link className="navitem" href="/about">
+              About
+            </Link>
+          </Sidebar>
+          <Content>{children}</Content>
+        </Layout>
+      </PageContextProvider>
+    </Provider>
   )
 }
 

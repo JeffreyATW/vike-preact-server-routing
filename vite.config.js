@@ -5,7 +5,10 @@ const config = {
   plugins: [preact(), vike()],
   // We manually add a list of dependencies to be pre-bundled, in order to avoid a page reload at dev start which breaks Vike's CI
   optimizeDeps: {
-    include: ['preact/devtools', 'preact/debug', 'preact/jsx-dev-runtime', 'preact', 'preact/hooks']
+    include: ['preact/devtools', 'preact/debug', 'preact/jsx-dev-runtime', 'preact', 'preact/hooks'],
+  },
+  ssr: {
+    noExternal: ['react-redux/*', 'use-sync-external-store/*']
   }
 }
 
