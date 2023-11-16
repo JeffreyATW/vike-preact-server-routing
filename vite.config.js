@@ -8,7 +8,7 @@ const config = {
     include: ['preact/devtools', 'preact/debug', 'preact/jsx-dev-runtime', 'preact', 'preact/hooks'],
   },
   ssr: {
-    noExternal: ['react-redux/*', 'use-sync-external-store/*']
+    noExternal: ['react-redux']
   }
 }
 

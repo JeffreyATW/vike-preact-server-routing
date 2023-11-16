@@ -2,13 +2,21 @@ import logo from './logo.svg'
 import { PageContextProvider } from './usePageContext'
 import './PageShell.css'
 import { Link } from './Link'
+
 import { Provider } from 'react-redux'
+import { getStore } from './store'
 
 export { PageShell }
 
 const PageShell = function ({ children, pageContext }) {
+  // NOTE(aurelien): actually initializing the store here is probably not a good idea as it has to be done in different
+  // ways whether we are on client or on server. So probably this should be moved to +onRenderHtml.jsx and
+  // +onRenderClient.jsx . See also:
+  // * https://github.com/brillout/vike-with-redux/blob/main/renderer/%2BonRenderClient.jsx
+  // * https://redux.js.org/usage/server-rendering
+  const store = getStore({})
   return (
-    <Provider>
+    <Provider store={store}>
       <PageContextProvider pageContext={pageContext}>
         <Layout>
           <Sidebar>
